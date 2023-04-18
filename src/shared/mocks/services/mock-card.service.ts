@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IFlipCard } from 'src/shared/models/iflip-card';
+import { IFlipCardData } from 'src/shared/models/iflip-card';
 
-const initData: IFlipCard[] = [
+const initData: IFlipCardData[] = [
   {
     name: 'Город',
     description: 'Москва',
@@ -20,18 +20,18 @@ const initData: IFlipCard[] = [
   providedIn: 'root',
 })
 export class MockCardService {
-  data: IFlipCard[] = Array.from(initData);
+  data: IFlipCardData[] = Array.from(initData);
   constructor() {}
 
-  addCard(card: IFlipCard) {
+  addCard(card: IFlipCardData) {
     this.data.push(card);
   }
 
-  deleteCard(card: IFlipCard) {
+  deleteCard(card: IFlipCardData) {
     this.data = this.data.filter((c) => c !== card);
   }
 
-  getAllCards(): IFlipCard[] {
+  getAllCards(): IFlipCardData[] {
     return this.data;
   }
 }

@@ -1,7 +1,10 @@
-<app-flip-card
-  *ngFor="let card of cards"
-  [card]="card"
-  [opened]="selectedCard === card"
-  (cardClicked)="toggleCard($event)"
-  (cardDelete)="onDeleteClick($event)"
-></app-flip-card>
+<button class="button" (click)="showAllFronts()">Перевернуть все карты</button>
+<div class="list">
+  <app-flip-card
+    *ngFor="let card of cards"
+    [card]="card"
+    [opened]="isFliped(card)"
+    (cardClicked)="toggleCard($event)"
+    (cardDelete)="onDeleteClick($event)"
+  ></app-flip-card>
+</div>

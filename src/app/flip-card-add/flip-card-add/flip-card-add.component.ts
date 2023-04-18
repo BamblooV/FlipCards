@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IFlipCard } from 'src/shared/models/iflip-card';
+import { IFlipCardData } from 'src/shared/models/iflip-card';
 
 @Component({
   selector: 'app-flip-card-add',
@@ -9,7 +9,7 @@ import { IFlipCard } from 'src/shared/models/iflip-card';
 })
 export class FlipCardAddComponent {
   @Output()
-  add = new EventEmitter<IFlipCard>();
+  add = new EventEmitter<IFlipCardData>();
 
   form = new FormGroup({
     name: new FormControl(null, [Validators.required]),

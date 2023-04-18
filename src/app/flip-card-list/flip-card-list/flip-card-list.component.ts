@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { MockCardService } from 'src/shared/mocks/services/mock-card.service';
 import { IFlipCard } from 'src/shared/models/iflip-card';
+import { FlipCardService } from 'src/shared/services/flip-card.service';
 
 @Component({
   selector: 'app-flip-card-list',
@@ -14,13 +15,25 @@ export class FlipCardListComponent {
   @Output()
   deleteCard = new EventEmitter<IFlipCard>();
 
-  selectedCard: IFlipCard | undefined;
+  constructor(private readonly flipService: FlipCardService) {}
 
   toggleCard(card: IFlipCard): void {
-    this.selectedCard = this.selectedCard === card ? undefined : card;
+    if (this.flipService.isBack(card)) {
+      this.flipService.showFront(card);
+    } else {
+      this.flipService.showBack(card);
+    }
   }
 
   onDeleteClick(card: IFlipCard) {
     this.deleteCard.emit(card);
+  }
+
+  isFliped(card: IFlipCard) {
+    return this.flipService.isBack(card);
+  }
+
+  showAllFronts() {
+    this.flipService.showAllFronts();
   }
 }

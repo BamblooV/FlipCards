@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MockCardService } from 'src/shared/mocks/services/mock-card.service';
-import { IFlipCard } from 'src/shared/models/iflip-card';
+// import { MockCardService } from 'src/shared/mocks/services/mock-card.service';
+import { IFlipCard, IFlipCardData } from 'src/shared/models/iflip-card';
+import { CardApiService } from 'src/shared/services/card-api.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,12 @@ import { IFlipCard } from 'src/shared/models/iflip-card';
 export class AppComponent implements OnInit {
   cards!: IFlipCard[];
 
-  constructor(private cardService: MockCardService) {}
+  constructor(private cardService: CardApiService) {}
 
-  addCard(card: IFlipCard) {
-    this.cardService.addCard(card);
-    this.loadCards();
+  addCard(card: IFlipCardData) {
+    this.cardService.addCard(card).subscribe(() => {
+      this.loadCards();
+    });
   }
 
   ngOnInit(): void {
@@ -22,11 +24,12 @@ export class AppComponent implements OnInit {
   }
 
   loadCards(): void {
-    this.cards = this.cardService.getAllCards();
+    this.cardService.getAllCards().subscribe((data) => (this.cards = data));
   }
 
   deleteCard(card: IFlipCard) {
-    this.cardService.deleteCard(card);
-    this.loadCards();
+    this.cardService.deleteCard(card).subscribe(() => {
+      this.loadCards();
+    });
   }
 }

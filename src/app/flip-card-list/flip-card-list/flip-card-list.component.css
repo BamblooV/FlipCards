@@ -1,4 +1,15 @@
-:host {
+.list {
   display: flex;
   flex-wrap: wrap;
+}
+
+input.button {
+  border: none;
+  border-radius: 4px;
+  background-color: #ffdd2d;
+  cursor: pointer;
+}
+
+input.button:hover {
+  opacity: 0.8;
 }
