@@ -1,0 +1,26 @@
+<form class="form" (ngSubmit)="addCard()" [formGroup]="form">
+  <div class="form-title">Добавить карточку</div>
+  <div class="form-content">
+    <div class="row">
+      <input
+        type="text"
+        placeholder="Название"
+        aria-label="Название"
+        formControlName="name"
+      />
+    </div>
+    <div class="row">
+      <textarea
+        placeholder="Описание"
+        aria-label="Описание"
+        formControlName="description"
+      ></textarea>
+      <div style="color: red" *ngIf="touchedOrDirty && form.invalid">
+        Все поля обязательны
+      </div>
+    </div>
+    <div class="row row_submit">
+      <input type="submit" class="button" value="Добавить карточку" />
+    </div>
+  </div>
+</form>

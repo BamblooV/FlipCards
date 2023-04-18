@@ -1,0 +1,5 @@
+<app-flip-card-add (add)="addCard($event)"></app-flip-card-add>
+<app-flip-card-list
+  [cards]="cards"
+  (deleteCard)="deleteCard($event)"
+></app-flip-card-list>

@@ -1,0 +1,7 @@
+<app-flip-card
+  *ngFor="let card of cards"
+  [card]="card"
+  [opened]="selectedCard === card"
+  (cardClicked)="toggleCard($event)"
+  (cardDelete)="onDeleteClick($event)"
+></app-flip-card>

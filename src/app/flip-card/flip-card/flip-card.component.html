@@ -1,0 +1,17 @@
+<div (click)="flipCard()" class="inner-content" [class.opened]="opened">
+  <div class="item item_front">
+    <div class="item-content">
+      <div class="close" (click)="deleteCard(); $event.stopPropagation()"></div>
+      <div class="name">{{ card.name }}</div>
+    </div>
+  </div>
+  <div class="item item_back">
+    <div class="item-content">
+      <div class="close" (click)="deleteCard(); $event.stopPropagation()"></div>
+      <div class="name">{{ card.name }}</div>
+      <div class="description">
+        {{ card.description }}
+      </div>
+    </div>
+  </div>
+</div>
