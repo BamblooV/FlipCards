@@ -1,4 +1,10 @@
-<div (click)="flipCard()" class="inner-content" [class.opened]="opened">
+<div
+  appDebounceClick
+  (debounceClick)="flipCard()"
+  [debounceTime]="800"
+  class="inner-content"
+  [class.opened]="opened"
+>
   <div class="item item_front">
     <div class="item-content">
       <div class="close" (click)="deleteCard(); $event.stopPropagation()"></div>
